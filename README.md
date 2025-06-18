@@ -1,4 +1,199 @@
-# Getting Started with Create React App
+# Tooriistamaailm Frontend
+
+React TypeScript frontend application for the Tooriistamaailm product management system.
+
+## Features
+
+- **Modern React**: Built with React 18 and TypeScript for type safety
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Infinite Scroll**: Seamless product loading with intersection observer
+- **Favorites System**: Interactive favorite/unfavorite functionality
+- **Grid Layout**: Responsive product grid (1-5 columns based on screen size)
+- **Clean Architecture**: Organized with hooks, services, and components
+
+## Technology Stack
+
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **Vite** - Fast build tool and dev server
+- **PostCSS** - CSS processing with Autoprefixer
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd tooriistamaailm-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
+
+The application will be available at `http://localhost:3002`
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── ProductGrid.tsx      # Main product grid component
+│   ├── ProductCard.tsx      # Individual product card
+│   └── FavoriteIcon.tsx     # Favorite toggle button
+├── hooks/
+│   └── useProducts.ts       # Custom hook for product data
+├── services/
+│   └── productService.ts    # API service layer
+├── types/
+│   └── product.d.ts         # TypeScript type definitions
+├── index.css               # Global styles and Tailwind imports
+└── App.tsx                 # Main application component
+```
+
+## Features
+
+### Infinite Scroll
+- Loads 20 products initially
+- Loads 10 additional products when scrolling near bottom
+- Uses Intersection Observer API for optimal performance
+- Smooth loading states and error handling
+
+### Responsive Grid
+- **Mobile (xs)**: 1 column
+- **Small (sm)**: 2 columns
+- **Medium (md)**: 3 columns  
+- **Large (lg)**: 4 columns
+- **Extra Large (xl)**: 5 columns
+
+### Product Cards
+- Product image with fallback
+- Product name and price
+- Interactive favorite button
+- Hover effects and transitions
+- Optimistic UI updates
+
+### API Integration
+- RESTful API communication with Laravel backend
+- Proper error handling and loading states
+- Product import functionality
+- Favorite toggle with immediate UI feedback
+
+## Available Scripts
+
+### Development
+```bash
+npm start          # Start development server
+npm run dev        # Alternative start command
+```
+
+### Building
+```bash
+npm run build      # Build for production
+npm run preview    # Preview production build
+```
+
+### Code Quality
+```bash
+npm run lint       # Run ESLint
+npm run type-check # TypeScript type checking
+```
+
+## Configuration
+
+### Environment Variables
+Create a `.env` file in the root directory:
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
+```
+
+### API Endpoints
+The frontend communicates with these backend endpoints:
+- `GET /api/products` - Fetch products with pagination
+- `POST /api/products/import` - Import products from external source
+- `POST /api/products/{id}/favorite` - Toggle product favorite status
+
+## Component Architecture
+
+### ProductGrid Component
+- Main container for product listing
+- Handles import functionality
+- Manages grid layout and infinite scroll
+- Displays loading states and error messages
+
+### ProductCard Component
+- Individual product display
+- Image handling with fallbacks
+- Price formatting
+- Favorite toggle integration
+
+### useProducts Hook
+- Custom React hook for product data management
+- Infinite scroll logic with Intersection Observer
+- State management for products, loading, and errors
+- Pagination handling
+
+### Product Service
+- API communication layer
+- HTTP client with proper error handling
+- Type-safe request/response handling
+- Centralized API configuration
+
+## Styling
+
+### Tailwind CSS
+The project uses Tailwind CSS for styling with:
+- Custom responsive breakpoints
+- Utility-first approach
+- Component-based styling
+- Mobile-first responsive design
+
+### Key Design Patterns
+- Card-based product display
+- Smooth hover interactions
+- Loading skeletons
+- Consistent spacing and typography
+- Accessible color contrasts
+
+## Development Guidelines
+
+### TypeScript
+- Strict type checking enabled
+- Interface definitions for all data structures
+- Proper type annotations for functions
+- Generic types for reusable components
+
+### Code Organization
+- Component-based architecture
+- Custom hooks for complex logic
+- Service layer for API calls
+- Type definitions in dedicated files
+
+### Performance
+- Lazy loading with intersection observer
+- Optimized re-renders with proper dependencies
+- Image optimization and fallbacks
+- Efficient state updates
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Requirements
+
+- Node.js >= 18.0.0
+- npm >= 8.0.0
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
