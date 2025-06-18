@@ -28,7 +28,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({
 
   const getImageSrc = () => {
     if (hasError) {
-      return "https://via.placeholder.com/300x200/e5e7eb/6b7280?text=No+Image";
+      return `https://placehold.co/300x200/f8fafc/64748b/png?text=${encodeURIComponent(alt.substring(0, 15))}`;
     }
     if (!attemptedOriginal) {
       return src;

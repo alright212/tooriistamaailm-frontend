@@ -1,6 +1,7 @@
 import React from "react";
 import { Product } from "../types/product";
 import { FavoriteIcon } from "./FavoriteIcon";
+import { ProductImage } from "./ProductImage";
 
 interface ProductCardProps {
   product: Product;
@@ -14,17 +15,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className="border rounded-lg shadow-lg overflow-hidden flex flex-col h-full bg-white hover:shadow-xl transition-shadow duration-300">
       <div className="relative">
-        <img
+        <ProductImage
           src={product.image_url}
           alt={product.name}
           className="w-full h-48 object-cover bg-gray-100"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            // Only set fallback if we haven't already set it
-            if (!target.src.includes('placeholder')) {
-              target.src = "https://via.placeholder.com/300x200/f3f4f6/9ca3af?text=Product+Image";
-            }
-          }}
+          originalPic={product.original_data?.pic}
         />
       </div>
       <div className="p-4 flex flex-col flex-grow">
