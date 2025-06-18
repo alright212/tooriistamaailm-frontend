@@ -7,7 +7,7 @@ export const useProducts = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const observer = useRef<IntersectionObserver>();
+  const observer = useRef<IntersectionObserver | null>(null);
 
   const initialPerPage = 20; // Displays the first 20 products on initial load
   const subsequentPerPage = 10; // When the user scrolls down the page, 10 products are loaded each time.
@@ -32,7 +32,10 @@ export const useProducts = () => {
   }, [loading, hasMore, page]);
 
   useEffect(() => {
-    loadProducts();
+    if (page === 1) {
+      loadProducts();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Load products only once on initial load
 
   const lastProductElementRef = useCallback(
