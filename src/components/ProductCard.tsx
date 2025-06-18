@@ -20,6 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           alt={product.name}
           className="w-full h-48 object-cover bg-gray-100"
           originalPic={product.original_data?.pic}
+          hasLocalImage={product.has_local_image}
         />
       </div>
       <div className="p-4 flex flex-col flex-grow">
