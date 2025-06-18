@@ -17,11 +17,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <img
           src={product.image_url}
           alt={product.name}
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-cover bg-gray-100"
           onError={(e) => {
-            // Fallback image if the original fails to load
             const target = e.target as HTMLImageElement;
-            target.src = "https://via.placeholder.com/300x200?text=No+Image";
+            // Only set fallback if we haven't already set it
+            if (!target.src.includes('placeholder')) {
+              target.src = "https://via.placeholder.com/300x200/f3f4f6/9ca3af?text=Product+Image";
+            }
           }}
         />
       </div>
@@ -30,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {product.name}
         </h3>
         <p className="text-xl font-bold text-blue-600 mb-3">
-          €{product.price.toFixed(2)}
+          €{parseFloat(product.price).toFixed(2)}
         </p>
         <button
           onClick={() => onToggleFavorite(product.id)}
